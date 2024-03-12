@@ -2,10 +2,6 @@
   "pages": [
     {
       "id": "Dashboard",
-      "isDefault": false
-    },
-    {
-      "id": "Home",
       "isDefault": true
     }
   ],
