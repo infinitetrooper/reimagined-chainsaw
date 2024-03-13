@@ -1,15 +1,11 @@
 {
   "pages": [
     {
+      "id": "Calendar Mobile",
+      "isDefault": false
+    },
+    {
       "id": "KYC Dashboard",
-      "isDefault": false
-    },
-    {
-      "id": "Returns",
-      "isDefault": false
-    },
-    {
-      "id": "Dashboard",
       "isDefault": true
     }
   ],
