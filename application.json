@@ -1,6 +1,10 @@
 {
   "pages": [
     {
+      "id": "KYC Dashboard",
+      "isDefault": false
+    },
+    {
       "id": "Returns",
       "isDefault": false
     },
