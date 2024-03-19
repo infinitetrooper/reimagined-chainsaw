@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: cURL request
         run: |
-          curl -f --location --request POST https://ee-3732.dp.appsmith.com/api/v1/git/deploy/app/65f1a2b1422f604077cf5357?branchName=master --header 'Authorization: Bearer ${{ secrets.RELEASE_EE_CD }}'
+          curl -f --location --request POST https://release-ee.appsmith.com/api/v1/git/deploy/app/65efea6c03f50648ed054d7a?branchName=master --header 'Authorization: Bearer ${{ secrets.RELEASE_EE_CD }}'
