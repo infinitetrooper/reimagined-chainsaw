@@ -2,10 +2,6 @@
   "pages": [
     {
       "id": "Calendar Mobile",
-      "isDefault": false
-    },
-    {
-      "id": "KYC Dashboard",
       "isDefault": true
     }
   ],

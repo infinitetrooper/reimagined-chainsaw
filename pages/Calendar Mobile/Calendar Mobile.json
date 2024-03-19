@@ -28,19 +28,6 @@
         "layoutOnLoadActions": [
           [
             {
-              "id": "Calendar Mobile_getEvents",
-              "name": "getEvents",
-              "confirmBeforeExecute": false,
-              "pluginType": "API",
-              "jsonPathKeys": [
-                "new Date(dat_date.selectedDate).toISOString()",
-                "new Date(moment(new Date().toISOString()).add(1, \"day\"))"
-              ],
-              "timeoutInMillisecond": 10000
-            }
-          ],
-          [
-            {
               "id": "Calendar Mobile_utils.generateAvailableSlots",
               "name": "utils.generateAvailableSlots",
               "collectionId": "Calendar Mobile_utils",
@@ -48,6 +35,19 @@
               "pluginType": "JS",
               "jsonPathKeys": [
                 "async () => {\n  const data = await getEvents.run();\n  const events = data.items;\n  const now = moment().tz(sel_timeZone.selectedOptionValue).startOf('hour').add(30, 'minutes');\n  const endTime = now.clone().set({\n    hour: 18,\n    minute: 0,\n    second: 0,\n    millisecond: 0\n  });\n  if (events && events.length > 0) {\n    const takenSlots = events.filter(event => {\n      const eventStart = moment(event.start.dateTime).tz(event.start.timeZone);\n      const eventEnd = moment(event.end.dateTime).tz(event.end.timeZone);\n      return eventStart.isBefore(endTime) && eventEnd.isAfter(now);\n    }).map(event => {\n      const eventStart = moment(event.start.dateTime).tz(event.start.timeZone);\n      const eventEnd = moment(event.end.dateTime).tz(event.end.timeZone);\n      return {\n        start: eventStart,\n        end: eventEnd\n      };\n    });\n    const availableSlots = [];\n    while (now.isBefore(endTime)) {\n      const slotEnd = now.clone().add(sel_meetingDuration.selectedOptionValue, 'minutes');\n      const isAvailable = takenSlots.every(takenSlot => {\n        return slotEnd.isSameOrBefore(takenSlot.start) || now.isSameOrAfter(takenSlot.end);\n      });\n      if (isAvailable) {\n        const formattedTime = `${now.format('h:mmA')} - ${slotEnd.format('h:mmA')}`;\n        const isoTime = now.toISOString();\n        availableSlots.push({\n          formattedTime,\n          isoTime\n        });\n      }\n      now.add(sel_meetingDuration.selectedOptionValue, 'minutes');\n    }\n    return availableSlots.map(s => {\n      return {\n        id: Math.random(),\n        ...s\n      };\n    });\n  } else {\n    const availableSlots = [];\n    for (let i = 0; i < 5; i++) {\n      const randomStartTime = utils.generateRandomTimeInWorkingHours();\n      const startTime = moment(randomStartTime).tz(sel_timeZone.selectedOptionValue);\n      const endTime = startTime.clone().add(sel_meetingDuration.selectedOptionValue, 'minutes');\n      const formattedTime = `${startTime.format('h:mmA')} - ${endTime.format('h:mmA')}`;\n      availableSlots.push({\n        formattedTime,\n        isoTime: startTime.toISOString()\n      });\n    }\n    return availableSlots.map(s => {\n      return {\n        id: Math.random(),\n        ...s\n      };\n    });\n  }\n}"
+              ],
+              "timeoutInMillisecond": 10000
+            }
+          ],
+          [
+            {
+              "id": "Calendar Mobile_getEvents",
+              "name": "getEvents",
+              "confirmBeforeExecute": false,
+              "pluginType": "API",
+              "jsonPathKeys": [
+                "new Date(dat_date.selectedDate).toISOString()",
+                "new Date(moment(new Date().toISOString()).add(1, \"day\"))"
               ],
               "timeoutInMillisecond": 10000
             }
