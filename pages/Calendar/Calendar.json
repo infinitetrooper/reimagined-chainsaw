@@ -1,7 +1,7 @@
 {
   "unpublishedPage": {
-    "name": "Calendar Mobile",
-    "slug": "calendar-mobile",
+    "name": "Calendar",
+    "slug": "calendar",
     "layouts": [
       {
         "viewMode": false,
@@ -28,9 +28,9 @@
         "layoutOnLoadActions": [
           [
             {
-              "id": "Calendar Mobile_utils.generateAvailableSlots",
+              "id": "Calendar_utils.generateAvailableSlots",
               "name": "utils.generateAvailableSlots",
-              "collectionId": "Calendar Mobile_utils",
+              "collectionId": "Calendar_utils",
               "confirmBeforeExecute": false,
               "pluginType": "JS",
               "jsonPathKeys": [
@@ -41,7 +41,7 @@
           ],
           [
             {
-              "id": "Calendar Mobile_getEvents",
+              "id": "Calendar_getEvents",
               "name": "getEvents",
               "confirmBeforeExecute": false,
               "pluginType": "API",
@@ -55,7 +55,7 @@
         ],
         "layoutOnLoadActionErrors": [],
         "validOnPageLoadActions": true,
-        "id": "Calendar Mobile",
+        "id": "Calendar",
         "deleted": false,
         "policies": [],
         "userPermissions": []

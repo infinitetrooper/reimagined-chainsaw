@@ -13,7 +13,7 @@
       "policies": [],
       "userPermissions": []
     },
-    "pageId": "Calendar Mobile",
+    "pageId": "Calendar",
     "actionConfiguration": {
       "timeoutInMillisecond": 10000,
       "paginationType": "NONE",
@@ -71,7 +71,7 @@
     "userPermissions": [],
     "createdAt": "2023-10-19T09:46:11Z"
   },
-  "id": "Calendar Mobile_createEvent",
+  "id": "Calendar_createEvent",
   "deleted": false,
   "gitSyncId": "65f0309f6015150d4decbba4_65f1a45c6015150d4decbe9c"
 }

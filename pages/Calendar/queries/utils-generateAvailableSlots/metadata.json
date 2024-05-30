@@ -2,8 +2,8 @@
   "pluginType": "JS",
   "pluginId": "js-plugin",
   "unpublishedAction": {
-    "name": "createEvent",
-    "fullyQualifiedName": "utils.createEvent",
+    "name": "generateAvailableSlots",
+    "fullyQualifiedName": "utils.generateAvailableSlots",
     "datasource": {
       "name": "UNUSED_DATASOURCE",
       "pluginId": "js-plugin",
@@ -13,8 +13,8 @@
       "policies": [],
       "userPermissions": []
     },
-    "pageId": "Calendar Mobile",
-    "collectionId": "Calendar Mobile_utils",
+    "pageId": "Calendar",
+    "collectionId": "Calendar_utils",
     "actionConfiguration": {
       "timeoutInMillisecond": 10000,
       "paginationType": "NONE",
@@ -22,7 +22,7 @@
       "selfReferencingDataPaths": [],
       "jsArguments": []
     },
-    "executeOnLoad": false,
+    "executeOnLoad": true,
     "dynamicBindingPathList": [
       {
         "key": "body"
@@ -35,9 +35,9 @@
     "confirmBeforeExecute": false,
     "policies": [],
     "userPermissions": [],
-    "createdAt": "2024-03-13T13:04:28Z"
+    "createdAt": "2023-10-31T04:48:17Z"
   },
-  "id": "Calendar Mobile_utils.createEvent",
+  "id": "Calendar_utils.generateAvailableSlots",
   "deleted": false,
-  "gitSyncId": "65f0309f6015150d4decbba4_65f1a45c6015150d4decbea2"
+  "gitSyncId": "65f0309f6015150d4decbba4_65f1a45c6015150d4decbea0"
 }

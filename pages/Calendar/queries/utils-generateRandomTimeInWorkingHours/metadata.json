@@ -13,8 +13,8 @@
       "policies": [],
       "userPermissions": []
     },
-    "pageId": "Calendar Mobile",
-    "collectionId": "Calendar Mobile_utils",
+    "pageId": "Calendar",
+    "collectionId": "Calendar_utils",
     "actionConfiguration": {
       "timeoutInMillisecond": 10000,
       "paginationType": "NONE",
@@ -37,7 +37,7 @@
     "userPermissions": [],
     "createdAt": "2024-03-13T13:04:28Z"
   },
-  "id": "Calendar Mobile_utils.generateRandomTimeInWorkingHours",
+  "id": "Calendar_utils.generateRandomTimeInWorkingHours",
   "deleted": false,
   "gitSyncId": "65f0309f6015150d4decbba4_65f1a45c6015150d4decbe9e"
 }
