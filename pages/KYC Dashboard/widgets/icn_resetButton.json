@@ -1,41 +1,53 @@
 {
-    "boxShadow": "none",
-    "widgetName": "icn_resetButton",
-    "onClick": "{{\nstoreValue('selectedStatus', '');\nutils.getAllKyc();\n}}",
-    "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
-    "dynamicPropertyPathList": [{"key": "onClick"}],
-    "displayName": "Icon Button",
-    "iconSVG": "/static/media/icon.1a0c634ac75f9fa6b6ae7a8df882a3ba.svg",
-    "searchTags": [
-        "click",
-        "submit"
-    ],
-    "topRow": 76,
-    "bottomRow": 81,
-    "parentRowSpace": 10,
-    "type": "ICON_BUTTON_WIDGET",
-    "hideCard": false,
-    "topRowBeforeCollapse": 76,
-    "animateLoading": true,
-    "parentColumnSpace": 19.8125,
-    "dynamicTriggerPathList": [{"key": "onClick"}],
-    "leftColumn": 30,
-    "dynamicBindingPathList": [{"key": "buttonColor"}],
-    "isDisabled": false,
-    "key": "82cgmpfsd9",
-    "isDeprecated": false,
-    "rightColumn": 32,
-    "iconName": "refresh",
-    "widgetId": "gv7ksscvho",
-    "bottomRowBeforeCollapse": 81,
-    "minWidth": 50,
-    "isVisible": false,
-    "version": 1,
-    "parentId": "0",
-    "renderMode": "CANVAS",
-    "isLoading": false,
-    "originalTopRow": 76,
-    "borderRadius": "1.5rem",
-    "originalBottomRow": 81,
-    "buttonVariant": "TERTIARY"
+  "animateLoading": true,
+  "borderRadius": "1.5rem",
+  "bottomRow": 81,
+  "bottomRowBeforeCollapse": 81,
+  "boxShadow": "none",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonVariant": "TERTIARY",
+  "displayName": "Icon Button",
+  "dynamicBindingPathList": [
+    {
+      "key": "buttonColor"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "hideCard": false,
+  "iconName": "refresh",
+  "iconSVG": "/static/media/icon.1a0c634ac75f9fa6b6ae7a8df882a3ba.svg",
+  "isDeprecated": false,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": false,
+  "key": "82cgmpfsd9",
+  "leftColumn": 30,
+  "minWidth": 50,
+  "onClick": "{{\nstoreValue('selectedStatus', '');\nutils.getAllKyc();\n}}",
+  "originalBottomRow": 81,
+  "originalTopRow": 76,
+  "parentColumnSpace": 19.8125,
+  "parentId": "0",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "rightColumn": 32,
+  "searchTags": [
+    "click",
+    "submit"
+  ],
+  "topRow": 76,
+  "topRowBeforeCollapse": 76,
+  "type": "ICON_BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "gv7ksscvho",
+  "widgetName": "icn_resetButton"
 }

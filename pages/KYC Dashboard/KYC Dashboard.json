@@ -1,145 +1,33 @@
 {
+  "gitSyncId": "655b30e5e0ef845cad55b6c9_65f1a3b16015150d4decbdaa",
   "unpublishedPage": {
-    "name": "KYC Dashboard",
-    "slug": "kyc-dashboard",
+    "isHidden": false,
     "layouts": [
       {
-        "viewMode": false,
         "dsl": {
-          "widgetName": "MainContainer",
           "backgroundColor": "none",
+          "bottomRow": 1610,
+          "canExtend": true,
+          "containerStyle": "none",
+          "detachFromLayout": true,
+          "dynamicBindingPathList": [],
+          "dynamicTriggerPathList": [],
+          "leftColumn": 0,
+          "minHeight": 1292,
+          "parentColumnSpace": 1,
+          "parentRowSpace": 1,
           "rightColumn": 4896,
           "snapColumns": 64,
-          "detachFromLayout": true,
-          "widgetId": "0",
-          "topRow": 0,
-          "bottomRow": 1610,
-          "containerStyle": "none",
           "snapRows": 124,
-          "parentRowSpace": 1,
+          "topRow": 0,
           "type": "CANVAS_WIDGET",
-          "canExtend": true,
           "version": 89,
-          "minHeight": 1292,
-          "dynamicTriggerPathList": [],
-          "parentColumnSpace": 1,
-          "dynamicBindingPathList": [],
-          "leftColumn": 0
-        },
-        "layoutOnLoadActions": [
-          [
-            {
-              "id": "KYC Dashboard_getAllKyc",
-              "name": "getAllKyc",
-              "confirmBeforeExecute": false,
-              "pluginType": "DB",
-              "jsonPathKeys": [],
-              "timeoutInMillisecond": 10000
-            }
-          ],
-          [
-            {
-              "id": "KYC Dashboard_utils.returnUserDocumentTypeOptions",
-              "name": "utils.returnUserDocumentTypeOptions",
-              "collectionId": "KYC Dashboard_utils",
-              "confirmBeforeExecute": false,
-              "pluginType": "JS",
-              "jsonPathKeys": [
-                "async () => {\n  const arr1 = await getKycDocument.run();\n  const userDocumentTypes = arr1.map(d => d.document_type);\n  const allDocumentTypes = ['Passport', 'Drivers license', 'Utility bill', 'Phone bill'];\n  var resultArray = [];\n  for (var i = 0; i < allDocumentTypes.length; i++) {\n    if (userDocumentTypes.indexOf(allDocumentTypes[i]) === -1) {\n      resultArray.push(allDocumentTypes[i]);\n    }\n  }\n  return resultArray.map(d => {\n    return {\n      label: d,\n      value: d\n    };\n  });\n}"
-              ],
-              "timeoutInMillisecond": 10000
-            }
-          ],
-          [
-            {
-              "id": "KYC Dashboard_dailyRegisteredUsersChartData",
-              "name": "dailyRegisteredUsersChartData",
-              "confirmBeforeExecute": false,
-              "pluginType": "DB",
-              "jsonPathKeys": [],
-              "timeoutInMillisecond": 10000
-            },
-            {
-              "id": "KYC Dashboard_getKycDocument",
-              "name": "getKycDocument",
-              "confirmBeforeExecute": false,
-              "pluginType": "DB",
-              "jsonPathKeys": [
-                "tbl_kycList.selectedRow.Id || '1'"
-              ],
-              "timeoutInMillisecond": 10000
-            },
-            {
-              "id": "KYC Dashboard_utils.getDashboardMetrics",
-              "name": "utils.getDashboardMetrics",
-              "collectionId": "KYC Dashboard_utils",
-              "confirmBeforeExecute": false,
-              "pluginType": "JS",
-              "jsonPathKeys": [
-                "async () => {\n  const allKyc = await getAllKyc.run();\n  return {\n    allUserCount: allKyc.length,\n    pendingCount: allKyc.filter(k => k.status === 'PENDING').length,\n    verifiedCount: allKyc.filter(k => k.status === 'VERIFIED').length,\n    blacklistedCount: allKyc.filter(k => k.status === 'BLACKLISTED').length\n  };\n}"
-              ],
-              "timeoutInMillisecond": 10000
-            },
-            {
-              "id": "KYC Dashboard_utils.initialize",
-              "name": "utils.initialize",
-              "collectionId": "KYC Dashboard_utils",
-              "confirmBeforeExecute": false,
-              "pluginType": "JS",
-              "jsonPathKeys": [
-                "() => {\n  storeValue('docIndex', 0);\n  storeValue('selectedStatus', '');\n}"
-              ],
-              "timeoutInMillisecond": 10000
-            },
-            {
-              "id": "KYC Dashboard_utils.setKycDocument",
-              "name": "utils.setKycDocument",
-              "collectionId": "KYC Dashboard_utils",
-              "confirmBeforeExecute": false,
-              "pluginType": "JS",
-              "jsonPathKeys": [
-                "async () => {\n  const kycDocument = await getKycDocument.run();\n  if (kycDocument) {\n    storeValue('kycDocument', kycDocument);\n  }\n}"
-              ],
-              "timeoutInMillisecond": 10000
-            }
-          ],
-          [
-            {
-              "id": "KYC Dashboard_utils.getAllKyc",
-              "name": "utils.getAllKyc",
-              "collectionId": "KYC Dashboard_utils",
-              "confirmBeforeExecute": false,
-              "pluginType": "JS",
-              "jsonPathKeys": [
-                "async () => {\n  const allKyc = await getAllKyc.run();\n  const fromDate = dat_fromDate.formattedDate || null;\n  const toDate = dat_toDate.formattedDate || null;\n  let filteredKyc = allKyc;\n  if (fromDate && toDate) {\n    filteredKyc = filteredKyc.filter(k => new Date(k.created) >= new Date(fromDate) && new Date(k.created) <= new Date(toDate));\n  }\n  if (sel_status.selectedOptionValue) {\n    filteredKyc = filteredKyc.filter(k => k.status === sel_status.selectedOptionValue);\n  }\n  return filteredKyc.map(k => ({\n    Id: k.id,\n    FullName: k.first_name + ' ' + k.last_name,\n    Created: new Date(k.created).toDateString(),\n    Status: k.status,\n    FirstName: k.first_name,\n    LastName: k.last_name,\n    Email: k.email,\n    DOB: k.date_of_birth,\n    Address: k.address,\n    Phone: k.phone,\n    Reason: k.reason,\n    Comment: k.comment\n  }));\n}"
-              ],
-              "timeoutInMillisecond": 10000
-            },
-            {
-              "id": "KYC Dashboard_utils.verifiedUsersByMonth",
-              "name": "utils.verifiedUsersByMonth",
-              "collectionId": "KYC Dashboard_utils",
-              "confirmBeforeExecute": false,
-              "pluginType": "JS",
-              "jsonPathKeys": [
-                "async () => {\n  const data = await getAllKyc.run();\n  const today = new Date();\n  const last12Months = new Date(today.getFullYear(), today.getMonth() - 11, 1);\n  const counts = {};\n  data.filter(obj => obj.status === 'VERIFIED').forEach(obj => {\n    const createdDate = new Date(obj.created);\n    if (createdDate >= last12Months && createdDate <= today) {\n      const monthYear = createdDate.toLocaleDateString('en-US', {\n        month: 'short',\n        year: 'numeric'\n      });\n      counts[monthYear] = (counts[monthYear] || 0) + 1;\n    }\n  });\n  const result = [];\n  let currentMonth = new Date(last12Months);\n  while (currentMonth <= today) {\n    const monthYear = currentMonth.toLocaleDateString('en-US', {\n      month: 'short',\n      year: 'numeric'\n    });\n    const count = counts[monthYear] || 0;\n    result.push({\n      monthYear,\n      count\n    });\n    currentMonth.setMonth(currentMonth.getMonth() + 1);\n  }\n  return result;\n}"
-              ],
-              "timeoutInMillisecond": 10000
-            }
-          ]
-        ],
-        "layoutOnLoadActionErrors": [],
-        "validOnPageLoadActions": true,
-        "id": "KYC Dashboard",
-        "deleted": false,
-        "policies": [],
-        "userPermissions": []
+          "widgetId": "0",
+          "widgetName": "MainContainer"
+        }
       }
     ],
-    "userPermissions": [],
-    "policies": [],
-    "isHidden": false
-  },
-  "deleted": false,
-  "gitSyncId": "655b30e5e0ef845cad55b6c9_65f1a3b16015150d4decbdaa"
+    "name": "KYC Dashboard",
+    "slug": "kyc-dashboard"
+  }
 }

@@ -1,59 +1,75 @@
 {
-    "boxShadow": "none",
-    "iconSVG": "/static/media/icon.bd99caba5853ad71e4b3d8daffacb3a2.svg",
-    "labelText": "Status",
-    "topRow": 74,
-    "labelWidth": 5,
-    "type": "SELECT_WIDGET",
-    "serverSideFiltering": false,
-    "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( appsmith.store.selectedStatus || ''))(sel_status.options, sel_status.serverSideFiltering) }}",
-    "animateLoading": true,
-    "leftColumn": 2,
-    "dynamicBindingPathList": [
-        {"key": "accentColor"},
-        {"key": "borderRadius"},
-        {"key": "defaultOptionValue"}
-    ],
-    "labelStyle": "BOLD",
-    "placeholderText": "",
-    "isDisabled": false,
-    "isRequired": false,
-    "dynamicHeight": "FIXED",
-    "accentColor": "{{appsmith.theme.colors.primaryColor}}",
-    "isVisible": true,
-    "version": 1,
-    "isLoading": false,
-    "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-    "originalBottomRow": 81,
-    "widgetName": "sel_status",
-    "isFilterable": true,
-    "dynamicPropertyPathList": [
-        {"key": "onOptionChange"},
-        {"key": "sourceData"}
-    ],
-    "displayName": "Select",
-    "searchTags": ["dropdown"],
-    "bottomRow": 81,
-    "parentRowSpace": 10,
-    "hideCard": false,
-    "parentColumnSpace": 23.8125,
-    "dynamicTriggerPathList": [{"key": "onOptionChange"}],
-    "labelPosition": "Top",
-    "sourceData": "[\n  {\n    \"label\": \"Pending\",\n    \"value\": \"PENDING\"\n  },\n  {\n    \"label\": \"Verified\",\n    \"value\": \"VERIFIED\"\n  },\n\t {\n    \"label\": \"Rejected\",\n    \"value\": \"REJECTED\"\n  },\n  {\n    \"label\": \"Blacklisted\",\n    \"value\": \"BLACKLISTED\"\n  }\n]",
-    "key": "grgezb6qgb",
-    "labelTextSize": "0.875rem",
-    "isDeprecated": false,
-    "rightColumn": 12,
-    "widgetId": "h5fkxxm3ic",
-    "optionValue": "value",
-    "minWidth": 450,
-    "parentId": "0",
-    "labelAlignment": "left",
-    "renderMode": "CANVAS",
-    "optionLabel": "label",
-    "responsiveBehavior": "fill",
-    "originalTopRow": 74,
-    "maxDynamicHeight": 9000,
-    "onOptionChange": "{{utils.getAllKyc()}}",
-    "minDynamicHeight": 4
+  "accentColor": "{{appsmith.theme.colors.primaryColor}}",
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 81,
+  "boxShadow": "none",
+  "defaultOptionValue": "{{ ((options, serverSideFiltering) => ( appsmith.store.selectedStatus || ''))(sel_status.options, sel_status.serverSideFiltering) }}",
+  "displayName": "Select",
+  "dynamicBindingPathList": [
+    {
+      "key": "accentColor"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "defaultOptionValue"
+    }
+  ],
+  "dynamicHeight": "FIXED",
+  "dynamicPropertyPathList": [
+    {
+      "key": "onOptionChange"
+    },
+    {
+      "key": "sourceData"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onOptionChange"
+    }
+  ],
+  "hideCard": false,
+  "iconSVG": "/static/media/icon.bd99caba5853ad71e4b3d8daffacb3a2.svg",
+  "isDeprecated": false,
+  "isDisabled": false,
+  "isFilterable": true,
+  "isLoading": false,
+  "isRequired": false,
+  "isVisible": true,
+  "key": "grgezb6qgb",
+  "labelAlignment": "left",
+  "labelPosition": "Top",
+  "labelStyle": "BOLD",
+  "labelText": "Status",
+  "labelTextSize": "0.875rem",
+  "labelWidth": 5,
+  "leftColumn": 2,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "minWidth": 450,
+  "onOptionChange": "{{utils.getAllKyc()}}",
+  "optionLabel": "label",
+  "optionValue": "value",
+  "originalBottomRow": 81,
+  "originalTopRow": 74,
+  "parentColumnSpace": 23.8125,
+  "parentId": "0",
+  "parentRowSpace": 10,
+  "placeholderText": "",
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 12,
+  "searchTags": [
+    "dropdown"
+  ],
+  "serverSideFiltering": false,
+  "sourceData": "[\n  {\n    \"label\": \"Pending\",\n    \"value\": \"PENDING\"\n  },\n  {\n    \"label\": \"Verified\",\n    \"value\": \"VERIFIED\"\n  },\n\t {\n    \"label\": \"Rejected\",\n    \"value\": \"REJECTED\"\n  },\n  {\n    \"label\": \"Blacklisted\",\n    \"value\": \"BLACKLISTED\"\n  }\n]",
+  "topRow": 74,
+  "type": "SELECT_WIDGET",
+  "version": 1,
+  "widgetId": "h5fkxxm3ic",
+  "widgetName": "sel_status"
 }
