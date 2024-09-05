@@ -1,70 +1,32 @@
 {
+  "gitSyncId": "65f0309f6015150d4decbba4_65f1a45c6015150d4decbe96",
   "unpublishedPage": {
-    "name": "Calendar",
-    "slug": "calendar",
+    "isHidden": false,
     "layouts": [
       {
-        "viewMode": false,
         "dsl": {
-          "widgetName": "MainContainer",
           "backgroundColor": "none",
-          "rightColumn": 1224,
-          "snapColumns": 64,
-          "detachFromLayout": true,
-          "widgetId": "0",
-          "topRow": 0,
           "bottomRow": 1070,
-          "containerStyle": "none",
-          "snapRows": 128,
-          "parentRowSpace": 1,
-          "type": "CANVAS_WIDGET",
           "canExtend": true,
-          "version": 89,
+          "containerStyle": "none",
+          "detachFromLayout": true,
+          "dynamicBindingPathList": [],
+          "leftColumn": 0,
           "minHeight": 1300,
           "parentColumnSpace": 1,
-          "dynamicBindingPathList": [],
-          "leftColumn": 0
-        },
-        "layoutOnLoadActions": [
-          [
-            {
-              "id": "Calendar_utils.generateAvailableSlots",
-              "name": "utils.generateAvailableSlots",
-              "collectionId": "Calendar_utils",
-              "confirmBeforeExecute": false,
-              "pluginType": "JS",
-              "jsonPathKeys": [
-                "async () => {\n  const data = await getEvents.run();\n  const events = data.items;\n  const now = moment().tz(sel_timeZone.selectedOptionValue).startOf('hour').add(30, 'minutes');\n  const endTime = now.clone().set({\n    hour: 18,\n    minute: 0,\n    second: 0,\n    millisecond: 0\n  });\n  if (events && events.length > 0) {\n    const takenSlots = events.filter(event => {\n      const eventStart = moment(event.start.dateTime).tz(event.start.timeZone);\n      const eventEnd = moment(event.end.dateTime).tz(event.end.timeZone);\n      return eventStart.isBefore(endTime) && eventEnd.isAfter(now);\n    }).map(event => {\n      const eventStart = moment(event.start.dateTime).tz(event.start.timeZone);\n      const eventEnd = moment(event.end.dateTime).tz(event.end.timeZone);\n      return {\n        start: eventStart,\n        end: eventEnd\n      };\n    });\n    const availableSlots = [];\n    while (now.isBefore(endTime)) {\n      const slotEnd = now.clone().add(sel_meetingDuration.selectedOptionValue, 'minutes');\n      const isAvailable = takenSlots.every(takenSlot => {\n        return slotEnd.isSameOrBefore(takenSlot.start) || now.isSameOrAfter(takenSlot.end);\n      });\n      if (isAvailable) {\n        const formattedTime = `${now.format('h:mmA')} - ${slotEnd.format('h:mmA')}`;\n        const isoTime = now.toISOString();\n        availableSlots.push({\n          formattedTime,\n          isoTime\n        });\n      }\n      now.add(sel_meetingDuration.selectedOptionValue, 'minutes');\n    }\n    return availableSlots.map(s => {\n      return {\n        id: Math.random(),\n        ...s\n      };\n    });\n  } else {\n    const availableSlots = [];\n    for (let i = 0; i < 5; i++) {\n      const randomStartTime = utils.generateRandomTimeInWorkingHours();\n      const startTime = moment(randomStartTime).tz(sel_timeZone.selectedOptionValue);\n      const endTime = startTime.clone().add(sel_meetingDuration.selectedOptionValue, 'minutes');\n      const formattedTime = `${startTime.format('h:mmA')} - ${endTime.format('h:mmA')}`;\n      availableSlots.push({\n        formattedTime,\n        isoTime: startTime.toISOString()\n      });\n    }\n    return availableSlots.map(s => {\n      return {\n        id: Math.random(),\n        ...s\n      };\n    });\n  }\n}"
-              ],
-              "timeoutInMillisecond": 10000
-            }
-          ],
-          [
-            {
-              "id": "Calendar_getEvents",
-              "name": "getEvents",
-              "confirmBeforeExecute": false,
-              "pluginType": "API",
-              "jsonPathKeys": [
-                "new Date(dat_date.selectedDate).toISOString()",
-                "new Date(moment(new Date().toISOString()).add(1, \"day\"))"
-              ],
-              "timeoutInMillisecond": 10000
-            }
-          ]
-        ],
-        "layoutOnLoadActionErrors": [],
-        "validOnPageLoadActions": true,
-        "id": "Calendar",
-        "deleted": false,
-        "policies": [],
-        "userPermissions": []
+          "parentRowSpace": 1,
+          "rightColumn": 1224,
+          "snapColumns": 64,
+          "snapRows": 128,
+          "topRow": 0,
+          "type": "CANVAS_WIDGET",
+          "version": 90,
+          "widgetId": "0",
+          "widgetName": "MainContainer"
+        }
       }
     ],
-    "userPermissions": [],
-    "policies": [],
-    "isHidden": false
-  },
-  "deleted": false,
-  "gitSyncId": "65f0309f6015150d4decbba4_65f1a45c6015150d4decbe96"
+    "name": "Calendar",
+    "slug": "calendar"
+  }
 }
