@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 13,
+  "bottomRow": 12,
   "boxShadow": "none",
   "buttonColor": "#71717a",
   "buttonVariant": "TERTIARY",
@@ -50,7 +50,7 @@
     "submit"
   ],
   "text": "Blacklisted",
-  "topRow": 9,
+  "topRow": 8,
   "type": "BUTTON_WIDGET",
   "version": 1,
   "widgetId": "2vpr2kutys",
