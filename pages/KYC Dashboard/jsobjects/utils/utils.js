@@ -5,7 +5,7 @@ export default {
 	},
 
 	getDashboardMetrics: async () => {
-		const allKyc = await getAllKyc.run();
+		const allKyc = await get_all_kyc.run();
 
 		return {
 			allUserCount: allKyc.length,
@@ -16,7 +16,7 @@ export default {
 	},
 
 	getAllKyc: async () => {
-		const allKyc = await getAllKyc.run();
+		const allKyc = await get_all_kyc.run();
 		const fromDate = dat_fromDate.formattedDate || null;
 		const toDate = dat_toDate.formattedDate || null;
 
@@ -50,7 +50,7 @@ export default {
 	},
 
 	setKycDocument: async () => {
-		const kycDocument = await getKycDocument.run();
+		const kycDocument = await get_kyc_document.run();
 		if (kycDocument) {
 			storeValue('kycDocument', kycDocument);
 		}
@@ -82,7 +82,7 @@ export default {
 	},
 
 	lineChartData: () => {
-		return dailyRegisteredUsersChartData.data.map(d => {
+		return daily_reg_users_chart_data.data.map(d => {
 			return {
 				x: new Date(d.day).toLocaleDateString().substring(0, 5),
 				y: d.count,
@@ -92,7 +92,7 @@ export default {
 
 	pieChartData: () => {
 		const counts = {};
-		getAllKyc.data.forEach((obj) => {
+		get_all_kyc.data.forEach((obj) => {
 			const status = obj.status;
 			if (!counts[status]) {
 				counts[status] = 1;
@@ -125,7 +125,7 @@ export default {
 	},
 
 	dailyRegUsersByStatus: async (status) => {
-		const data = await dailyRegUsersByStatus.run({status});
+		const data = await daily_reg_user_by_status.run({status});
 
 		return data.map(d => {
 			return {
@@ -136,7 +136,7 @@ export default {
 	},
 
 	verifiedUsersByMonth: async () => {
-		const data = await getAllKyc.run();
+		const data = await get_all_kyc.run();
 
 		const today = new Date();
 		const last12Months = new Date(today.getFullYear(), today.getMonth() - 11, 1); // 12 months ago from today
@@ -161,7 +161,7 @@ export default {
 
 	addKycDocument: async () => {
 		try{
-			await addKycDocument.run();
+			await add_kyc_document.run();
 			await this.getAllKyc();
 			await this.setKycDocument();
 			await this.returnUserDocumentTypeOptions();
@@ -174,7 +174,7 @@ export default {
 	},
 
 	handleDocumentSwitch: async (action) => {
-		const totalDoc = await getKycDocument.run();
+		const totalDoc = await get_kyc_document.run();
 		const totalDocLength = totalDoc.length;
 		const prevDocIndex = appsmith.store.docIndex || 0;
 
@@ -196,7 +196,7 @@ export default {
 
 	returnUserDocumentTypeOptions: async () => {
 		// const userDocumentTypes = getKycDocument.data.forEach(d => d.document_type);
-		const arr1 = await getKycDocument.run();
+		const arr1 = await get_kyc_document.run();
 		
 		const userDocumentTypes = arr1.map(d => d.document_type);
 	

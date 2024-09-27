@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "655b30e5e0ef845cad55b6c9_65f1a3b26015150d4decbdca",
-  "id": "KYC Dashboard_addKycDocument",
+  "gitSyncId": "655b30e5e0ef845cad55b6c9_65f1a3b26015150d4decbdc0",
+  "id": "KYC Dashboard_daily_reg_user_by_status",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO kyc_document\n  (\"user\", document_type, issue_date, expiry_date, data)\nVALUES\n  (\n    {{ tbl_kycList.selectedRow.Id }},\n    {{ sel_documentType.selectedOptionValue }},\n    {{ dat_issueDate.formattedDate }},\n\t\t{{ dat_expiryDate.formattedDate }},\n\t\t{{ inp_imageUrl.text }}\n  );",
+      "body": "SELECT date_range.date, COALESCE(counts.num_entries, 0) AS count\nFROM generate_series(NOW() - INTERVAL '9 days', NOW(), INTERVAL '1 day') date_range(date)\nLEFT JOIN (\n  SELECT DATE(created) AS date, COUNT(*) AS num_entries\n  FROM kyc \n  WHERE status = {{this.params.status || 'PENDING'}} \n  AND created >= NOW() - INTERVAL '9 days'\n  GROUP BY DATE(created)\n) counts ON counts.date = date_range.date::date\nORDER BY date_range.date;\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -28,7 +28,7 @@
       }
     ],
     "executeOnLoad": false,
-    "name": "addKycDocument",
+    "name": "daily_reg_user_by_status",
     "pageId": "KYC Dashboard",
     "userSetOnLoad": false
   }

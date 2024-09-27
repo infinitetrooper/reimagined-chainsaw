@@ -38,7 +38,7 @@
   "key": "mk0501bihn",
   "leftColumn": 46,
   "minWidth": 120,
-  "onClick": "{{updateKyc.run(() => {\n\tutils.getAllKyc();\n\tshowAlert('User data updated!','success')\n\t\n}, () => showAlert('Error Updating Information','error'))}}",
+  "onClick": "{{update_kyc.run(() => {\n\tutils.getAllKyc();\n\tshowAlert('User data updated!','success')\n\t\n}, () => showAlert('Error Updating Information','error'))}}",
   "originalBottomRow": 53,
   "originalTopRow": 48,
   "parentColumnSpace": 11.59375,

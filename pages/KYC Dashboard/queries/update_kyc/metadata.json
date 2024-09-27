@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "655b30e5e0ef845cad55b6c9_65f1a3b26015150d4decbdc0",
-  "id": "KYC Dashboard_dailyRegUsersByStatus",
+  "gitSyncId": "655b30e5e0ef845cad55b6c9_65f1a3b26015150d4decbdb8",
+  "id": "KYC Dashboard_update_kyc",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT date_range.date, COALESCE(counts.num_entries, 0) AS count\nFROM generate_series(NOW() - INTERVAL '9 days', NOW(), INTERVAL '1 day') date_range(date)\nLEFT JOIN (\n  SELECT DATE(created) AS date, COUNT(*) AS num_entries\n  FROM kyc \n  WHERE status = {{this.params.status || 'PENDING'}} \n  AND created >= NOW() - INTERVAL '9 days'\n  GROUP BY DATE(created)\n) counts ON counts.date = date_range.date::date\nORDER BY date_range.date;\n",
+      "body": "UPDATE kyc\n  SET first_name = {{inp_firstName.text}},\n\t\t\tlast_name = {{inp_lastName.text}},\n\t\t\temail = {{inp_email.text}},\n\t\t\tphone = {{inp_phone.text}},\n\t\t\taddress = {{inp_address.text}},\n\t\t\tdate_of_birth = {{dat_dob.formattedDate}},\n\t\t\tstatus = {{sel_verificationStatus.selectedOptionValue}},\n\t\t\tcomment = {{rte_comments.text || ''}}\n  WHERE id = {{ tbl_kycList.selectedRow.Id }};\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -28,7 +28,7 @@
       }
     ],
     "executeOnLoad": false,
-    "name": "dailyRegUsersByStatus",
+    "name": "update_kyc",
     "pageId": "KYC Dashboard",
     "userSetOnLoad": false
   }
